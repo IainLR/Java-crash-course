@@ -6,6 +6,8 @@ public class Main {
 
         int apples = 18;
         int oranges = 9;
+        double applePrice = 12.60;
+        double orangePrice = 4.50;
 
         System.out.println(apples == oranges);
         System.out.println(apples != oranges);
@@ -14,5 +16,7 @@ public class Main {
         System.out.printf("%d < %d is %s %n", apples, oranges, apples < oranges);
         System.out.printf("%d >= %d is %s %n", apples, oranges, apples >= oranges);
         System.out.printf("%d <= %d is %s %n", apples, oranges, apples <= oranges);
+
+        System.out.printf("Reducing apple cost: %s %n", (apples > oranges) && (applePrice > orangePrice));
     }
 }
