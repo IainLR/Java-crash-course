@@ -13,7 +13,7 @@ public class Main {
         System.out.println("How old are you?");
         int age = Integer.parseInt(scanner.nextLine());
 //        int age = scanner.nextInt();
-        System.out.println(name + " is " + age +" years old.");
+//        System.out.println(name + " is " + age +" years old.");
         System.out.printf("%s is %d years old%n", name, age);
         scanner.close();
     }
