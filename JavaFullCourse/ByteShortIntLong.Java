@@ -37,5 +37,19 @@ public class Main {
         System.out.printf("Long Minimum Value = %d%n", myMinLongValue);
         System.out.printf("Long Maximum Value = %d%n", myMaxLongValue);
         long bigLongLiteralValue = 2_147_483_647_432L;
+
+        int myTotal = (myMinIntValue / 2);
+
+        byte myNewByteValue = (byte) (myMinByteValue / 2);
+        // casting: treat or convert a number from one type
+        // to another. (byte) (myMinByteValue / 2);
+        // we put our desired type in parenthesis
+        short myNewShortValue = (short) (myMinShortValue / 2);
+
+        byte challengeByte = 127;
+        short challengeShort = 400;
+        int challengeInt = 4000;
+        long challengeLong = 50000L + 10L * (challengeByte + challengeShort + challengeInt);
+        System.out.println(challengeLong);
     }
 }
