@@ -46,8 +46,43 @@ public class Main {
 
         int secondTopScore = 60;
         // logical and operator &&
-        if (topScore > secondTopScore && topScore < 100) {
+        if ((topScore > secondTopScore) && (topScore < 100)) {
             System.out.println("Greater than second top score and less than 100");
         }
+        // logical or operator ||
+        if ((topScore > 90) || (secondTopScore <= 90)) {
+            System.out.println("Either or both of conditions have been satisfied");
+        }
+
+        //
+        int newValue = 50;
+        if (newValue == 50) {
+            System.out.println("This is true");
+        }
+
+        boolean isCar = false;
+        if (isCar) {
+            System.out.println("this will run, despite lack of second '='");
+        }
+
+        // Ternary
+        isCar = true;
+        boolean wasCar = isCar ? true : false;
+        if (wasCar) {
+            System.out.println("wasCar is true");
+        }
+        // operator challenge
+        double twenty = 20.00d;
+        double eighty = 80.00d;
+        double addAndMultiply = (twenty + eighty) * 100.00d;
+        System.out.println(addAndMultiply);
+        double remainder = addAndMultiply % 40.00d;
+        System.out.println(remainder);
+        boolean isZero = (remainder == 0) ? true : false;
+        System.out.println(isZero);
+        if (!isZero) {
+            System.out.println("Got some remainder");
+        }
+
     }
 }
