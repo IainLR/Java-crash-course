@@ -29,7 +29,25 @@ public class Main {
         result -= 2;
         System.out.println(result);
 
-        //control flow and if-then. Conditional logic.
-        
+        // control flow and if-then. Conditional logic.
+        // use a code block
+        boolean isAlien = false;
+        if (isAlien == false) {
+            System.out.println("it is not an alien");
+        }
+        if (!isAlien) {
+            System.out.println("it is still not an alien");
+        }
+
+        int topScore = 80;
+        if (topScore < 100) {
+            System.out.println("it's a high score!");
+        }
+
+        int secondTopScore = 60;
+        // logical and operator &&
+        if (topScore > secondTopScore && topScore < 100) {
+            System.out.println("Greater than second top score and less than 100");
+        }
     }
 }
