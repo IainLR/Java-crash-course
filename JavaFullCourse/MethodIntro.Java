@@ -19,8 +19,8 @@ public class Main {
         highScore = calculateScore(gameOver, score, levelCompleted, bonus);
         System.out.println("Your final score was " + highScore);
 
-        int highScoreResult = calculateHighScorePosition(1500);
-        displayHighScorePosition("Cyrano", highScoreResult);
+        int scoreResult = calculateHighScorePosition(1500);
+        displayHighScorePosition("Cyrano", scoreResult);
         displayHighScorePosition("Cyrano", 1);
         displayHighScorePosition("Cyrano", calculateHighScorePosition(1500));
         displayHighScorePosition("Doug", calculateHighScorePosition(900));
@@ -28,12 +28,11 @@ public class Main {
         displayHighScorePosition("Megan", calculateHighScorePosition(50));
 
 
-
     }
 
     public static int calculateScore(boolean gameOver, int score, int levelCompleted, int bonus) {
 
-        if(gameOver) {
+        if (gameOver) {
             int finalScore = score + (levelCompleted * bonus);
             finalScore += 1000;
             return finalScore;
@@ -48,15 +47,29 @@ public class Main {
     }
 
     public static int calculateHighScorePosition(int score) {
+//        if (score >= 1000) {
+//            return 1;
+//        }
+//        if (score >= 500) {
+//            return 2;
+//        }
+//        if (score >= 100) {
+//            return 3;
+//        }
+//
+//        return 4;
+
+        int position = 4;
         if (score >= 1000) {
-            return 1;
-        } else if (score >= 500 && score < 1000) {
-            return 2;
-        } else if (score < 500 && score >= 100){
-            return 3;
-        } else {
-            return 4;
+            position = 1;
+        } else if (score >= 500) {
+            position = 2;
+        } else if (score >= 100) {
+            position = 3;
         }
+
+
+        return position;
 
     }
 
