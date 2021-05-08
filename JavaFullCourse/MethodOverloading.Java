@@ -2,6 +2,8 @@ package academy.learnprogramming;
 
 public class Main {
 
+    private static final String INVALID_VALUE_MESSAGE = "Invalid value";
+
     public static void main(String[] args) {
        int newScore = calculateScore("Doug", 500);
         System.out.println("New score is " + newScore);
@@ -71,7 +73,7 @@ public class Main {
             }
             return hours +"h " + remainingMinutes + "m " + seconds + "s";
         }
-        return "Invalid value";
+        return INVALID_VALUE_MESSAGE;
     }
 
     public static String getDurationString(int seconds) {
@@ -80,7 +82,7 @@ public class Main {
             int remainderSeconds = seconds % 60;
             return getDurationString(minutes, remainderSeconds);
         }
-        return "Invalid value";
+        return INVALID_VALUE_MESSAGE;
     }
 
 }
