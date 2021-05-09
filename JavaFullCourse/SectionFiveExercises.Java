@@ -5,6 +5,7 @@ public class Main {
     public static void main(String[] args) {
 	// write your code here
         System.out.println(isLeapYear(1600));
+        System.out.println(isOdd(1));
     }
     // 1
     public static void printNumberInWord(int number) {
@@ -89,6 +90,31 @@ public class Main {
         }
 
         return daysInMonth;
+    }
+
+    // 3
+    public static boolean isOdd(int number) {
+        if(number > 0) {
+            if (number % 2 != 0) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static int sumOdd(int start, int end) {
+        int sum = 0;
+        if(end < start || start < 0 || end < 0){
+            return -1;
+        }
+
+        for (int i = start; i <= end; i++){
+            if (isOdd(i)) {
+                sum += i;
+            }
+        }
+
+        return sum;
     }
 
 
