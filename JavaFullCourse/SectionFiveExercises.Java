@@ -1,5 +1,7 @@
 package academy.learnprogramming;
 
+import com.sun.source.tree.IfTree;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -10,6 +12,7 @@ public class Main {
 //        System.out.println(isPalindrome(-1221));
 //        System.out.println(sumFirstAndLastDigit(222));
         System.out.println(getEvenDigitSum(2344));
+        System.out.println(hasSharedDigit(22, 31));
     }
     // 1
     public static void printNumberInWord(int number) {
@@ -212,7 +215,27 @@ public class Main {
 
         return -1;
     }
-    
+
     //7
+    public static boolean hasSharedDigit(int firstNumber, int secondNumber) {
+        if (firstNumber < 10 || firstNumber > 99 || secondNumber < 10 || secondNumber > 99) {
+            return false;
+        }
+
+        int lastDigitOne = firstNumber % 10;
+        int lastDigitTwo = secondNumber % 10;
+        firstNumber /= 10;
+        secondNumber /= 10;
+        return lastDigitOne == lastDigitTwo || lastDigitOne == secondNumber
+                || firstNumber == lastDigitTwo || firstNumber == secondNumber;
+
+        // Q&A Answer
+//        if((x > 99) || (x < 10) || (y > 99) || (y < 10)) {
+//            return false;
+//        }else {
+//            return((x/10 == y/10)||(x/10 == y % 10)||(y/10 == x % 10)||(x%10 == y%10));
+//        }
+    }
+
 
 }
