@@ -4,8 +4,11 @@ public class Main {
 
     public static void main(String[] args) {
 	// write your code here
-        System.out.println(isLeapYear(1600));
-        System.out.println(isOdd(1));
+//        System.out.println(isLeapYear(1600));
+//        System.out.println(isOdd(1));
+        System.out.println(sumDigits(32123));
+        System.out.println(isPalindrome(-1221));
+        System.out.println(sumFirstAndLastDigit(222));
     }
     // 1
     public static void printNumberInWord(int number) {
@@ -117,6 +120,77 @@ public class Main {
         return sum;
     }
 
+    //video challenge digit sum
+    // my solution
+    public static int sumDigits(int number) {
+        int counter = 0;
+        if (number >= 10) {
+            while (number >= 10) {
+                counter += (number % 10);
+                number = number/10;
+                if (number < 10) {
+                    return counter += number;
+                }
+            }
+        }
+        return -1;
+    }
+    // instructor solution:
+    public static int sumDigits(int number, int ignore) {
+       if (number < 10) {
+           return -1;
+       }
 
+       int sum = 0;
+
+       while (number > 0) {
+           //isolate least sig digit (last digit)
+           int digit = number % 10;
+           sum += digit;
+           //drop least sig digit
+           number /= 10;
+       }
+
+       return sum;
+    }
+
+
+    // 4
+    public static boolean isPalindrome(int number) {
+        int reverse = 0;
+        int lastDigit;
+        int comparisonNumber = Math.abs(number);
+        number = comparisonNumber;
+
+        while(number > 0) {
+            lastDigit = number % 10;
+            reverse *= 10;
+            reverse += lastDigit;
+            number /= 10;
+
+//            if (number < 10) {
+//                reverse *= 10;
+//                reverse += number;
+//                System.out.println(reverse);
+//                break;
+//            }
+        }
+
+        return comparisonNumber == reverse;
+    }
+
+    //5
+    public static int sumFirstAndLastDigit(int number) {
+        int lastDigit;
+        if (number >= 0) {
+            lastDigit = number % 10;
+            while (number >= 10) {
+                number /= 10;
+            }
+
+            return lastDigit + number;
+        }
+        return -1;
+    }
 
 }
