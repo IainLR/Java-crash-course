@@ -6,9 +6,10 @@ public class Main {
 	// write your code here
 //        System.out.println(isLeapYear(1600));
 //        System.out.println(isOdd(1));
-        System.out.println(sumDigits(32123));
-        System.out.println(isPalindrome(-1221));
-        System.out.println(sumFirstAndLastDigit(222));
+//        System.out.println(sumDigits(32123));
+//        System.out.println(isPalindrome(-1221));
+//        System.out.println(sumFirstAndLastDigit(222));
+        System.out.println(getEvenDigitSum(2344));
     }
     // 1
     public static void printNumberInWord(int number) {
@@ -192,5 +193,26 @@ public class Main {
         }
         return -1;
     }
+
+    //6
+    public static int getEvenDigitSum(int number) {
+        int sum = 0;
+        int lastDigit;
+
+        if (number >= 0) {
+            while (number > 0) {
+                lastDigit = number % 10;
+                if (lastDigit % 2 == 0) {
+                    sum += lastDigit;
+                }
+                number /= 10;
+            }
+            return sum;
+        }
+
+        return -1;
+    }
+    
+    //7
 
 }
