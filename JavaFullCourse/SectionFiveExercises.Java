@@ -5,7 +5,7 @@ import com.sun.source.tree.IfTree;
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
+        // write your code here
 //        System.out.println(isLeapYear(1600));
 //        System.out.println(isOdd(1));
 //        System.out.println(sumDigits(32123));
@@ -13,7 +13,10 @@ public class Main {
 //        System.out.println(sumFirstAndLastDigit(222));
         System.out.println(getEvenDigitSum(2344));
         System.out.println(hasSharedDigit(22, 31));
+        System.out.println(hasSameLastDigit(112, 222, 333));
+        printFactors(6);
     }
+
     // 1
     public static void printNumberInWord(int number) {
         switch (number) {
@@ -57,10 +60,10 @@ public class Main {
 
     public static boolean isLeapYear(int year) {
         if (year >= 1 && year <= 9999) {
-            if (year % 4 != 0){
+            if (year % 4 != 0) {
                 return false;
             }
-            if (year % 100 != 0){
+            if (year % 100 != 0) {
                 return true;
             }
             if (year % 400 == 0) {
@@ -82,10 +85,19 @@ public class Main {
         int daysInMonth;
 
         switch (month) {
-            case 1: case 3: case 5: case 7: case 8: case 10: case 12:
-                 daysInMonth = 31;
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+                daysInMonth = 31;
                 break;
-            case 4: case 6: case 9: case 11:
+            case 4:
+            case 6:
+            case 9:
+            case 11:
                 daysInMonth = 30;
                 break;
             case 2:
@@ -101,7 +113,7 @@ public class Main {
 
     // 3
     public static boolean isOdd(int number) {
-        if(number > 0) {
+        if (number > 0) {
             if (number % 2 != 0) {
                 return true;
             }
@@ -111,11 +123,11 @@ public class Main {
 
     public static int sumOdd(int start, int end) {
         int sum = 0;
-        if(end < start || start < 0 || end < 0){
+        if (end < start || start < 0 || end < 0) {
             return -1;
         }
 
-        for (int i = start; i <= end; i++){
+        for (int i = start; i <= end; i++) {
             if (isOdd(i)) {
                 sum += i;
             }
@@ -131,7 +143,7 @@ public class Main {
         if (number >= 10) {
             while (number >= 10) {
                 counter += (number % 10);
-                number = number/10;
+                number = number / 10;
                 if (number < 10) {
                     return counter += number;
                 }
@@ -139,23 +151,24 @@ public class Main {
         }
         return -1;
     }
+
     // instructor solution:
     public static int sumDigits(int number, int ignore) {
-       if (number < 10) {
-           return -1;
-       }
+        if (number < 10) {
+            return -1;
+        }
 
-       int sum = 0;
+        int sum = 0;
 
-       while (number > 0) {
-           //isolate least sig digit (last digit)
-           int digit = number % 10;
-           sum += digit;
-           //drop least sig digit
-           number /= 10;
-       }
+        while (number > 0) {
+            //isolate least sig digit (last digit)
+            int digit = number % 10;
+            sum += digit;
+            //drop least sig digit
+            number /= 10;
+        }
 
-       return sum;
+        return sum;
     }
 
 
@@ -166,7 +179,7 @@ public class Main {
         int comparisonNumber = Math.abs(number);
         number = comparisonNumber;
 
-        while(number > 0) {
+        while (number > 0) {
             lastDigit = number % 10;
             reverse *= 10;
             reverse += lastDigit;
@@ -237,5 +250,84 @@ public class Main {
 //        }
     }
 
+    //8
+    public static boolean hasSameLastDigit(int one, int two, int three) {
+        if (isValid(one) && isValid(two) && isValid(three)) {
+            return one % 10 == two % 10 || two % 10 == three % 10 || one % 10 == three % 10;
+        }
 
+        return false;
+
+    }
+
+    public static boolean isValid(int number) {
+        return number >= 10 && number <= 1000;
+    }
+
+    //9
+    public static int getGreatestCommonDivisor(int first, int second) {
+        if (first < 10 || second < 10) {
+            return -1;
+        }
+        int divisor = -1;
+        int limit = Math.max(first, second);
+
+        for (int i = 1; i <= limit; i++) {
+            if(first % i == 0 && second % i == 0) {
+                divisor = i;
+            }
+            if (divisor > first || divisor > second) {
+                break;
+            }
+
+
+        }
+
+        return divisor;
+
+        //          cool algo solution!
+//            if (first < 10 || second < 10) {
+//                return -1;
+//            }
+//            while (first != second) {
+//                if (first > second)
+//                    first = first - second;
+//                else {
+//                    second = second - first;
+//                }
+//            }
+//            return second;
+//          }
+    }
+
+    // 21
+
+    public static void printFactors(int number) {
+        if (number < 1) {
+            System.out.println("Invalid Value");
+        }
+
+        int factor;
+        for (int i = 1; i <= number; i++) {
+            if (number % i == 0) {
+                System.out.printf("%d ", i);
+            }
+        }
+
+    }
+
+    // 22
+    public static boolean isPerfectNumber(int number) {
+        if (number >= 1) {
+            int result = 0;
+            for (int i = 1; i < number; i++) {
+                if (number % i == 0) {
+                    result += i;
+                }
+            }
+            return result == number;
+        }
+        return false;
+    }
+    
 }
