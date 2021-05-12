@@ -15,6 +15,10 @@ public class Main {
         System.out.println(hasSharedDigit(22, 31));
         System.out.println(hasSameLastDigit(112, 222, 333));
         printFactors(6);
+        numberToWords(0);
+        System.out.println(reverse(98));
+        System.out.println(reverse(471));
+        System.out.println(getDigitCount(0));
     }
 
     // 1
@@ -316,7 +320,7 @@ public class Main {
 
     }
 
-    // 22
+    // 22 (overall, not in section)
     public static boolean isPerfectNumber(int number) {
         if (number >= 1) {
             int result = 0;
@@ -329,5 +333,164 @@ public class Main {
         }
         return false;
     }
-    
+
+//    I would also like to point out two possible optimizations for this code:
+//            1) We only need to loop until i <= number / 2. We can exit the loop then.
+//
+//            2) If the number is odd, we can increment i by +2 each loop iteration to skip unnecessary numbers.
+//
+//
+//    This could be one solution with those optimizations:
+
+//    public static boolean isPerfectNumber(int number) {
+//
+//        int sumOfProperDivisors = 0;
+//        int increment = (number % 2 == 0) ? 1 : 2;
+//
+//        for (int i = 1; i <= number / 2; i += increment)
+//            if (number % i == 0)
+//                sumOfProperDivisors += i;
+//
+//        return sumOfProperDivisors == number && number > 1;
+//    }
+
+    // 23
+//    public static void numberToWords(int number) {
+//        if (number < 0) {
+//            System.out.println("Invalid Value");
+//        }
+//        int lastDigit;
+//        String entireNumberString = "";
+//        while (number > 0) {
+//            lastDigit = number % 10;
+//            switch (lastDigit) {
+//                case 0:
+//                    entireNumberString = "Zero " + entireNumberString;
+//                    break;
+//                case 1:
+//                    entireNumberString = "One " + entireNumberString;
+//                    break;
+//                case 2:
+//                    entireNumberString = "Two " + entireNumberString;
+//                    break;
+//                case 3:
+//                    entireNumberString = "Three " + entireNumberString;
+//                    break;
+//                case 4:
+//                    entireNumberString = "Four " + entireNumberString;
+//                    break;
+//                case 5:
+//                    entireNumberString = "Five " + entireNumberString;
+//                    break;
+//                case 6:
+//                    entireNumberString = "Six " + entireNumberString;
+//                    break;
+//                case 7:
+//                    entireNumberString = "Seven " + entireNumberString;
+//                    break;
+//                case 8:
+//                    entireNumberString = "Eight " + entireNumberString;
+//                    break;
+//                case 9:
+//                    entireNumberString = "Nine " + entireNumberString;
+//                    break;
+//            }
+//            number /= 10;
+//        }
+//        System.out.println(entireNumberString);
+//    }
+
+    public static void numberToWords(int number) {
+        if (number < 0) {
+            System.out.println("Invalid Value");
+        }
+        int lastDigit;
+        int reverse = reverse(number);
+        int reverseLength = getDigitCount(reverse);
+        int trueLength = getDigitCount(number);
+
+        String entireNumberString = "";
+        if (reverse == 0) {
+            entireNumberString = "Zero";
+        }
+
+        while (reverse > 0) {
+            lastDigit = reverse % 10;
+            switch (lastDigit) {
+                case 0:
+                    entireNumberString += "Zero ";
+                    break;
+                case 1:
+                    entireNumberString += "One ";
+                    break;
+                case 2:
+                    entireNumberString += "Two ";
+                    break;
+                case 3:
+                    entireNumberString += "Three ";
+                    break;
+                case 4:
+                    entireNumberString += "Four ";
+                    break;
+                case 5:
+                    entireNumberString += "Five ";
+                    break;
+                case 6:
+                    entireNumberString += "Six ";
+                    break;
+                case 7:
+                    entireNumberString += "Seven ";
+                    break;
+                case 8:
+                    entireNumberString += "Eight ";
+                    break;
+                case 9:
+                    entireNumberString += "Nine ";
+                    break;
+            }
+            reverse /= 10;
+        }
+        if (trueLength > reverseLength) {
+            for (int i = 1; i <= (trueLength - reverseLength); i++) {
+                entireNumberString += "Zero ";
+            }
+        }
+            System.out.println(entireNumberString);
+
+    }
+
+    public static int reverse(int number) {
+        int reverse = 0;
+        int AbsoluteNumber = Math.abs(number);
+        while (AbsoluteNumber >= 10) {
+            int lastDigit = AbsoluteNumber % 10;
+            AbsoluteNumber /= 10;
+            reverse = (reverse + lastDigit) * 10 ;
+        }
+        reverse += AbsoluteNumber;
+
+        if (number < 0){
+            return reverse * -1;
+        }
+        return reverse;
+    }
+
+    public static int getDigitCount(int number) {
+        int counter = 0;
+        if (number >= 0) {
+            if (number == 0) {
+                return 1;
+            }
+            while (number > 0) {
+                number /= 10;
+                counter++;
+            }
+            return counter;
+        }
+
+        return -1;
+    }
+
+
+
 }
