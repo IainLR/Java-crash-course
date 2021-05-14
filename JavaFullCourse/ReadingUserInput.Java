@@ -41,10 +41,15 @@ public class Main {
                 count++;
             } else {
                 System.out.println("Invalid Number");
-                break;
+
             }
+            // prevent infinite loop if invalid entry
+            scanner.nextLine(); // handle end of line (enter key)
 
         }
         System.out.println("Your Total is: " + sum);
+
+        scanner.close();
     }
+
 }
