@@ -30,25 +30,50 @@ public class Main {
 //
 //        scanner.close();
 
-        int count = 1;
-        int sum = 0;
-        while (count < 11) {
-            System.out.println("Enter number #" + count);
+        //CHALLENGE
+//        int count = 1;
+//        int sum = 0;
+//        while (count < 11) {
+//            System.out.println("Enter number #" + count);
+//            boolean hasNextInt = scanner.hasNextInt();
+//            if (hasNextInt) {
+//                int number = scanner.nextInt();
+//                sum += number;
+//                count++;
+//            } else {
+//                System.out.println("Invalid Number");
+//
+//            }
+//            // prevent infinite loop if invalid entry
+//            scanner.nextLine(); // handle end of line (enter key)
+//
+//        }
+//        System.out.println("Your Total is: " + sum);
+
+        //CHALLENGE
+
+        int low = 0;
+        int high = 0;
+
+        while (true) {
+            System.out.println("Enter number");
             boolean hasNextInt = scanner.hasNextInt();
             if (hasNextInt) {
                 int number = scanner.nextInt();
-                sum += number;
-                count++;
+                if (number > high) {
+                    high = number;
+                }
+                if (number < low) {
+                    low = number;
+                }
             } else {
-                System.out.println("Invalid Number");
-
+                break;
             }
-            // prevent infinite loop if invalid entry
-            scanner.nextLine(); // handle end of line (enter key)
 
         }
-        System.out.println("Your Total is: " + sum);
 
+        System.out.println("Your high number was: " + high );
+        System.out.println("Your low number was: " + low );
         scanner.close();
     }
 
