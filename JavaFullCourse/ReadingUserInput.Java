@@ -88,4 +88,32 @@ public class Main {
         scanner.close();
     }
 
+    public static void inputThenPrintSumAndAverage() {
+        Scanner scanner = new Scanner((System.in));
+
+        int sum = 0;
+        int count = 0;
+        double average;
+
+        while (true) {
+            boolean hasNextInt = scanner.hasNextInt();
+
+            if (hasNextInt) {
+                int number = scanner.nextInt();
+                sum += number;
+                count++;
+
+            } else {
+                break;
+            }
+
+            scanner.nextLine();
+
+        }
+        average = (double)sum / count;
+        System.out.println("SUM = " + sum + " AVG = " + Math.round(average));
+
+        scanner.close();
+    }
+
 }
