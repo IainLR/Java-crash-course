@@ -52,23 +52,34 @@ public class Main {
 
         //CHALLENGE
 
-        int low = 0;
-        int high = 0;
+        int low = Integer.MAX_VALUE;
+        int high = Integer.MIN_VALUE;
+//        boolean first = true;
 
         while (true) {
             System.out.println("Enter number");
             boolean hasNextInt = scanner.hasNextInt();
             if (hasNextInt) {
                 int number = scanner.nextInt();
+
+//                if (first) {
+//                    high = number;
+//                    low = number;
+//                    first = false;
+//                }
+
                 if (number > high) {
                     high = number;
                 }
+
                 if (number < low) {
                     low = number;
                 }
             } else {
                 break;
             }
+
+            scanner.nextLine(); // handle input
 
         }
 
